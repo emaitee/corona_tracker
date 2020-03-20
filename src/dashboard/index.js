@@ -124,12 +124,12 @@ class Dashboard extends React.PureComponent {
   render() {
     const { globalStat, nigerianStat, imgURL } = this.state;
     return (
-      <div className="row">
-        <div className="col-md-4 col-lg-4">
+      <div className="row m-0">
+        <div className="col-md-4 col-lg-2">
           <AffectedCountries />
         </div>
         <div className="col-md-8 col-lg-8">
-          <img alt="info" src={imgURL} style={{ height: 200, width: 200 }} />
+          {/* <img alt="info" src={imgURL} style={{ height: 200, width: 200 }} /> */}
           <Summary
             title="Global Stat"
             updateTime={globalStat.statistic_taken_at}
@@ -141,14 +141,14 @@ class Dashboard extends React.PureComponent {
             stat={nigerianStat}
           />
 
-          <div>
+          {/* <div>
             <button type="button" class="btn btn-outline-dark">
               View list of affected countries
             </button>
             <button type="button" class="btn btn-outline-dark">
               View list of affected countries
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     );

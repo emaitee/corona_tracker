@@ -1,20 +1,13 @@
 import React from 'react';
 import { apiKey } from '../util';
+import Scrollbars from 'react-custom-scrollbars';
 
 class AffectedCountries extends React.PureComponent {
   state = {
-    affected_countries: [
-      'China',
-      'Italy',
-      'Spain',
-      'Iran',
-      'Germany',
-      'USA',
-      'France',
-      'S. Korea',
-      'Switzerland',
-    ],
-    statistic_taken_at: '2020-03-20 14:20:08',
+    data: {
+      affected_countries: [],
+      statistic_taken_at: '2020-03-20 14:20:08',
+    },
   };
 
   componentDidMount() {
@@ -28,9 +21,8 @@ class AffectedCountries extends React.PureComponent {
         },
       }
     )
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => response.json())
+      .then(data => this.setState({ data }))
       .catch(err => {
         console.log(err);
       });
@@ -40,13 +32,16 @@ class AffectedCountries extends React.PureComponent {
       <div class="card">
         <div class="card-body">
           <h6>Affected Countries</h6>
-          <ul class="list-group">
-            {this.state.affected_countries.map((item, index) => (
-              <li key={index} class="list-group-item">
-                {item}
-              </li>
-            ))}
-          </ul>
+          <input className="form-control" placeholder="search" />
+          <Scrollbars style={{ height: '85vh' }} autoHide>
+            <ul class="list-group list-group-flush">
+              {this.state.data.affected_countries.map((item, index) => (
+                <li key={index} class="list-group-item">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Scrollbars>
         </div>
       </div>
     );
