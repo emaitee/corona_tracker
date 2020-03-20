@@ -2,6 +2,7 @@ import React from 'react';
 import { apiKey } from '../util';
 import moment from 'moment';
 import AffectedCountries from '../AffectedCountries';
+import Charts from '../Charts';
 
 function Item({ title, value }) {
   return (
@@ -124,24 +125,22 @@ class Dashboard extends React.PureComponent {
   render() {
     const { globalStat, nigerianStat, imgURL } = this.state;
     return (
-      <div className="row m-0">
-        <div className="col-md-4 col-lg-2">
-          <AffectedCountries />
+      <div>
+        <div className="mt-5">
+          <Charts />
         </div>
-        <div className="col-md-8 col-lg-8">
-          {/* <img alt="info" src={imgURL} style={{ height: 200, width: 200 }} /> */}
-          <Summary
-            title="Global Stat"
-            updateTime={globalStat.statistic_taken_at}
-            stat={globalStat}
-          />
-          <Summary
-            title="Nigerian Stat"
-            updateTime={nigerianStat.record_date}
-            stat={nigerianStat}
-          />
+        <Summary
+          title="Global Statistics"
+          updateTime={globalStat.statistic_taken_at}
+          stat={globalStat}
+        />
+        <Summary
+          title="Nigerian Statistics"
+          updateTime={nigerianStat.record_date}
+          stat={nigerianStat}
+        />
 
-          {/* <div>
+        {/* <div>
             <button type="button" class="btn btn-outline-dark">
               View list of affected countries
             </button>
@@ -149,7 +148,6 @@ class Dashboard extends React.PureComponent {
               View list of affected countries
             </button>
           </div> */}
-        </div>
       </div>
     );
   }
