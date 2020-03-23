@@ -8,8 +8,8 @@ function Item({ title, value }) {
   return (
     <div className="card m-1" style={{ width: '18rem' }}>
       <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">
+        <h5 className="card-title text-center">{title}</h5>
+        <h6 className="card-subtitle mb-2 text-muted text-center">
           {value === '' ? 0 : value}
         </h6>
       </div>
@@ -129,17 +129,17 @@ class Dashboard extends React.PureComponent {
         <div className="mt-5">
           <Charts />
         </div>
-        <Summary
-          title="Global Statistics"
-          updateTime={globalStat.statistic_taken_at}
-          stat={globalStat}
-        />
+
         <Summary
           title="Nigerian Statistics"
           updateTime={nigerianStat.record_date}
           stat={nigerianStat}
         />
-
+        <Summary
+          title="Global Statistics"
+          updateTime={globalStat.statistic_taken_at}
+          stat={globalStat}
+        />
         {/* <div>
             <button type="button" class="btn btn-outline-dark">
               View list of affected countries
